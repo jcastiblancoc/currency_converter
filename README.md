@@ -1,82 +1,142 @@
 # Currency Converter
 
-This is a simple Python application for converting currencies using live exchange rates fetched from an external API. The application runs in the console and provides a straightforward way to convert amounts between different currencies.
+**Simple Python CLI Tool for Real-Time Currency Exchange Conversions**
 
-## Features
+A lightweight Python utility that demonstrates clean code practices and architecture patterns for building reusable CLI applications. Converts amounts between different currencies using live exchange rates from an external API.
 
-- Converts amounts between various currencies.
-- Fetches real-time exchange rates via an external API.
-- Simple console-based interface.
+## 🌟 Overview
 
-## Prerequisites
+- **Type**: Command-line application (CLI)
+- **Language**: Python 3.8+
+- **Purpose**: Real-time currency exchange conversions
+- **Focus**: Clean code, modularity, error handling, and API integration
+- **Use Case**: Demonstrate Python best practices and API consumption
 
-- Python 3.8+ installed.
-- Internet access to retrieve live exchange rates.
+## ✨ Features
 
-## Installation
+- 💰 **Multi-Currency Support**: Convert between major currencies
+- 🔄 **Live Exchange Rates**: Fetches real-time rates from external API
+- 🌎 **Simple Interface**: Straightforward console-based interaction
+- 😷 **Error Handling**: Graceful handling of API failures and invalid input
+- 🧪 **Well-Tested**: Comprehensive unit tests
+- 🌐 **Extensible**: Easy to add new currencies or data sources
 
-1. Clone the repository:
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Python 3.8+
+- pip
+- Internet access (for live exchange rates)
+
+### Installation
+
+1. **Clone the repository**
    ```bash
    git clone https://github.com/jcastiblancoc/currency_converter.git
    cd currency_converter
-Set up a virtual environment (optional, but recommended):
+   ```
 
-python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-Install dependencies:
+2. **Create virtual environment** (recommended)
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
-pip install -r requirements.txt
-Usage
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Usage
+
 Run the application:
 
-python currency_converter.py
-The application will prompt you to enter:
+```bash
+python main.py
+```
 
-The currency you want to convert from (e.g., USD).
-The currency you want to convert to (e.g., EUR).
-The amount you want to convert.
-The converted amount will be displayed based on the latest exchange rates.
-
-Example Interaction
-
-Enter base currency (e.g., USD): USD
-Enter target currency (e.g., EUR): EUR
+Example interaction:
+```
 Enter amount: 100
-Converted amount: 94.32 EUR
+Enter source currency (e.g., USD): USD
+Enter target currency (e.g., EUR): EUR
+100.00 USD = 92.50 EUR (Exchange rate: 0.9250)
+```
 
-#Project Structure
+## 🗍️ Code Example
 
-currency_converter/
-├──app                       # Main script for currency conversion logic
-├── currency_converter.py    # Helpers file
-├── requirements.txt         # Required Python packages
-├── README.md                # Project documentation
-API Integration
-The application fetches exchange rates using an external API. The API endpoint is set in the currency_converter.py file. You can update the URL if needed:
+```python
+from currency_converter import CurrencyConverter
 
-python
+converter = CurrencyConverter()
+amount = 100
+result = converter.convert(amount, 'USD', 'EUR')
+print(f"{amount} USD = {result} EUR")
+```
 
-API_URL = "https://api.exchangerate-api.com/v4/latest/"
-If you'd like to use a different API, replace the endpoint accordingly in the code.
+## 🧪 Testing
 
-Development
-You can contribute to the development by following these steps:
+Run the test suite:
 
-Fork the repository.
-Create a new branch:
-bash
+```bash
+pytest
+```
 
-git checkout -b feature/your-feature-name
-Make your changes, commit them, and push:
-bash
+With coverage report:
 
-git push origin feature/your-feature-name
-Open a pull request.
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
+```bash
+pytest --cov=src --cov-report=html
+```
 
-Resources
-Python Documentation
-ExchangeRate-API
+## 🛠️ Tech Stack
 
-This version of the `README.md` assumes a simple Python app for currency conversion
+- **Language**: Python 3.8+
+- **HTTP Client**: requests library
+- **Testing**: pytest
+- **Code Quality**: Black, Flake8
+- **API Source**: Open Exchange Rates API (or similar)
+
+## 📁 Project Structure
+
+```
+.
+├── src/
+│   ├── converter.py       # Main converter logic
+│   ├── api_client.py      # API integration
+│   └── utils.py          # Utility functions
+├── tests/
+│   ├── test_converter.py
+│   └── test_api_client.py
+├── main.py            # Entry point
+├── requirements.txt
+└── README.md
+```
+
+## 📚 Learning Outcomes
+
+This project demonstrates:
+
+- Clean code principles and modular design
+- External API consumption and error handling
+- Unit testing and TDD practices
+- Python packaging and dependency management
+- CLI application structure
+
+## 🛠 Troubleshooting
+
+**API Rate Limit Exceeded**
+- Wait a few minutes before retrying
+- Consider implementing request caching
+
+**Currency Not Supported**
+- Check the API documentation for supported currencies
+- Verify the currency code (e.g., USD, EUR, GBP)
+
+## 📄 License
+
+MIT License - See LICENSE file for details
+
+---
+
+**Purpose**: Learning project showcasing Python best practices
